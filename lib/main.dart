@@ -11,7 +11,7 @@ void main() {
     theme: ThemeData(
         // primaryColor: Colors.grey,
         scaffoldBackgroundColor: const Color(0XffF6F8FC)),
-    home: const StartScreen(),
+    home: const HomePage(),
     routes: {
       '/login/': (context) => const LoginView(),
       '/register/': (context) => const RegisterView(),
