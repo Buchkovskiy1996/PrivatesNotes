@@ -19,7 +19,12 @@ class StartScreen extends StatelessWidget {
               height: 20,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/login/',
+                  (route) => false,
+                );
+              },
               child: Text('Go to Login/Register'),
             ),
           ],
