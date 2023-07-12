@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_private_notes/view/home_page.dart';
 import 'package:my_private_notes/view/login_view.dart';
+import 'package:my_private_notes/view/notes_page.dart';
 import 'package:my_private_notes/view/register_view.dart';
 import 'package:my_private_notes/view/start_screen.dart';
 
@@ -13,9 +14,10 @@ void main() {
         scaffoldBackgroundColor: const Color(0XffF6F8FC)),
     home: const HomePage(),
     routes: {
-      '/login/': (context) => const LoginView(),
-      '/register/': (context) => const RegisterView(),
       '/startScreen/': (context) => const StartScreen(),
+      '/register/': (context) => const RegisterView(),
+      '/login/': (context) => const LoginView(),
+      '/notes/': (context) => const NotesView(),
     },
   ));
 }

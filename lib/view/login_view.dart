@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:my_private_notes/widgets/button_style.dart';
 import 'package:my_private_notes/widgets/style_text.dart';
 import 'package:my_private_notes/widgets/widgets_textField.dart';
+import 'dart:developer' as devtools show log;
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -114,16 +115,20 @@ class _LoginViewState extends State<LoginView> {
                 final password = _password.text; //регистрация пароля
                 //  FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password) //аудификация firebase
                 try {
-                  final UserCredential = await FirebaseAuth.instance
-                      .signInWithEmailAndPassword(
-                          email: email, password: password); //войти в систему
-                  print(UserCredential);
+                  await FirebaseAuth.instance.signInWithEmailAndPassword(
+                    email: email,
+                    password: password,
+                  ); //войти в систему
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/notes/',
+                    (route) => false,
+                  );
                 } on FirebaseAuthException catch (e) {
                   if (e.code == 'user-not-found') {
-                    print('User not found');
+                    devtools.log('User not found');
                   } else if (e.code == 'wrong-password') {
-                    print('wrong password');
-                    print(e.code);
+                    devtools.log('wrong password');
+                    devtools.log(e.code);
                   }
                 }
               },

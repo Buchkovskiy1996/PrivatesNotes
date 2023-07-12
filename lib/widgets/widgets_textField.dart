@@ -6,19 +6,18 @@ class CustomTextField extends StatelessWidget {
   final String hintText;
   final bool obscureText;
 
-  const CustomTextField({
-    Key? key,
-    required this.controller,
-    required this.keyboardType,
-    required this.hintText,
-    required this.obscureText,
-  }) : super(key: key);
+  const CustomTextField(
+      {required this.controller,
+      required this.keyboardType,
+      required this.hintText,
+      required this.obscureText,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
     final border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(20),
-      borderSide: BorderSide(
+      borderSide: const BorderSide(
         color: Colors.transparent,
       ),
     );
@@ -27,7 +26,7 @@ class CustomTextField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Material(
         elevation: 20,
-        shadowColor: Color(0xffE4F1F4),
+        shadowColor: const Color(0xffE4F1F4),
         borderRadius: BorderRadius.circular(20),
         child: TextField(
           controller: controller,
@@ -37,9 +36,9 @@ class CustomTextField extends StatelessWidget {
           keyboardType: keyboardType,
           decoration: InputDecoration(
             hintText: hintText,
-            hintStyle: TextStyle(color: Colors.grey),
+            hintStyle: const TextStyle(color: Colors.grey),
             filled: true,
-            fillColor: Color.fromARGB(255, 255, 255, 255),
+            fillColor: const Color.fromARGB(255, 255, 255, 255),
             focusedBorder: border,
             enabledBorder: border,
           ),

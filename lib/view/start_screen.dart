@@ -10,12 +10,12 @@ class StartScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Your private notes',
               style: TextStyle(fontSize: 36),
               textAlign: TextAlign.center,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             TextButton(
@@ -25,7 +25,7 @@ class StartScreen extends StatelessWidget {
                   (route) => false,
                 );
               },
-              child: Text('Go to Login/Register'),
+              child: const Text('Go to Login/Register'),
             ),
           ],
         ),
