@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:my_private_notes/utilities/show_error_dialog.dart';
 import 'package:my_private_notes/widgets/button_style.dart';
 import 'package:my_private_notes/widgets/style_text.dart';
 import 'package:my_private_notes/widgets/widgets_textField.dart';
-import 'dart:developer' as devtools show log;
 
 import '../constants/routes.dart';
 
@@ -128,18 +128,24 @@ class _RegisterViewState extends State<RegisterView> {
                 final email = _email.text;
                 final password = _password.text;
                 try {
-                  final userCredential = await FirebaseAuth.instance
-                      .createUserWithEmailAndPassword(
-                          email: email, password: password);
-                  devtools.log(userCredential.toString());
+                  await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                      email: email, password: password);
+                  final user = FirebaseAuth.instance.currentUser;
+                  await user?.sendEmailVerification();
+                  Navigator.of(context).pushNamed(verifyEmailRote);
                 } on FirebaseAuthException catch (e) {
                   if (e.code == 'weak-password') {
-                    devtools.log('Weak password');
+                    await showErrorDialog(context, 'Weak password');
                   } else if (e.code == 'email-already-in-use') {
-                    devtools.log('Email is alredy in use');
+                    await showErrorDialog(context, 'Email is alredy in use');
                   } else if (e.code == 'invalid-email') {
-                    devtools.log('Invalid email entered');
+                    await showErrorDialog(
+                        context, 'This is an invalid email address');
+                  } else {
+                    await showErrorDialog(context, 'Error ${e.code}');
                   }
+                } catch (e) {
+                  await showErrorDialog(context, e.toString());
                 }
               },
             ),

@@ -4,6 +4,7 @@ import 'package:my_private_notes/view/login_view.dart';
 import 'package:my_private_notes/view/notes_page.dart';
 import 'package:my_private_notes/view/register_view.dart';
 import 'package:my_private_notes/view/start_screen.dart';
+import 'package:my_private_notes/view/verify_email.view.dart';
 
 import 'constants/routes.dart';
 
@@ -20,6 +21,7 @@ void main() {
       registerRoute: (context) => const RegisterView(),
       loginRoute: (context) => const LoginView(),
       notesRoute: (context) => const NotesView(),
+      verifyEmailRote: (context) => const VerifyEmailView(),
     },
   ));
 }
