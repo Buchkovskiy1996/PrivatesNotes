@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constants/routes.dart';
+
 class StartScreen extends StatelessWidget {
   const StartScreen({super.key});
 
@@ -21,7 +23,7 @@ class StartScreen extends StatelessWidget {
             TextButton(
               onPressed: () {
                 Navigator.of(context).pushNamedAndRemoveUntil(
-                  '/login/',
+                  loginRoute,
                   (route) => false,
                 );
               },
